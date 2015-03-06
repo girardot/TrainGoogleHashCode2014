@@ -32,4 +32,14 @@ public class Cell {
         return line + " " + column;
     }
 
+    private State state;
+
+    public Cell(State state) {
+        this.state = state;
+    }
+
+    public State getState() {
+        return state;
+    }
+
 }

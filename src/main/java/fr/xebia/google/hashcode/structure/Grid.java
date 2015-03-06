@@ -14,12 +14,33 @@ public class Grid {
         cells = new Cell[lineSize * columnSize];
     }
 
+    public int getLineSize() {
+        return lineSize;
+    }
+
+    public int getColumnSize() {
+        return columnSize;
+    }
+
     public Cell getCell(int lineNumber, int columnNumber) {
         return cells[computeIndex(lineNumber, columnNumber)];
     }
 
+    public void addCell(int index, String readChar) {
+        this.cells[index] = new Cell(State.fromAssociatedChar(readChar));
+    }
+
     int computeIndex(int lineNumber, int columnNumber) {
         return lineNumber * columnSize + columnNumber;
+    }
+
+    int[] computeCoordinates(int index) {
+        int[] coordinates = new int[2];
+
+        coordinates[0] = index / columnSize;
+        coordinates[1] = index % columnSize;
+
+        return coordinates;
     }
 
 }
