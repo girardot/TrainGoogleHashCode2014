@@ -1,6 +1,7 @@
 package fr.xebia.google.hashcode.instruction;
 
 import fr.xebia.google.hashcode.structure.Cell;
+import fr.xebia.google.hashcode.structure.Grid;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -9,6 +10,8 @@ public interface Instruction {
 
     final Pattern PAINT_PATTERN = Pattern.compile("PAINTSQ (\\d+) (\\d+) (\\d+)");
     final Pattern ERASE_PATTERN = Pattern.compile("ERASECELL (\\d+) (\\d+)");
+
+    void print(Grid grid);
 
     static Instruction generateInstructionFromText(String textInstruction) {
 

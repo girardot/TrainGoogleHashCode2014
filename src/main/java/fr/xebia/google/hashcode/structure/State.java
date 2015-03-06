@@ -20,4 +20,7 @@ public enum State {
         throw new RuntimeException("Unknown associatedChar");
     }
 
+    public String getAssociatedChar() {
+        return associatedChar;
+    }
 }

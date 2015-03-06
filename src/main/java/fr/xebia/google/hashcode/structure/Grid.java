@@ -12,6 +12,14 @@ public class Grid {
         this.columnSize = columnSize;
 
         cells = new Cell[lineSize * columnSize];
+
+        init();
+    }
+
+    public void init() {
+        for (int i = 0; i < lineSize * columnSize; i++) {
+            cells[i] = new Cell(State.BLANK);
+        }
     }
 
     public int getLineSize() {
@@ -41,6 +49,18 @@ public class Grid {
         coordinates[1] = index % columnSize;
 
         return coordinates;
+    }
+
+    @Override
+    public String toString() {
+        String result = "";
+        for (int i = 0; i < lineSize * columnSize; i++) {
+            result += cells[i].getState().getAssociatedChar();
+            if ((i +1) % columnSize == 0) {
+                result += "\n";
+            }
+        }
+        return result;
     }
 
 }

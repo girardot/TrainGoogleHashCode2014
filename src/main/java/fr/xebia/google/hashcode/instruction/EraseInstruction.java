@@ -1,6 +1,8 @@
 package fr.xebia.google.hashcode.instruction;
 
 import fr.xebia.google.hashcode.structure.Cell;
+import fr.xebia.google.hashcode.structure.Grid;
+import fr.xebia.google.hashcode.structure.State;
 
 public class EraseInstruction implements Instruction {
 
@@ -23,4 +25,8 @@ public class EraseInstruction implements Instruction {
         return "ERASECELL " + cell;
     }
 
+    @Override
+    public void print(Grid grid) {
+        grid.getCell(cell.getLine(), cell.getColumn()).setState(State.BLANK);
+    }
 }
