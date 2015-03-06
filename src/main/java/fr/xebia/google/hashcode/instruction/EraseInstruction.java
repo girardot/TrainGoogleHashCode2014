@@ -18,4 +18,9 @@ public class EraseInstruction implements Instruction {
         this.cell = cell;
     }
 
+    @Override
+    public String toString() {
+        return "ERASECELL " + cell;
+    }
+
 }

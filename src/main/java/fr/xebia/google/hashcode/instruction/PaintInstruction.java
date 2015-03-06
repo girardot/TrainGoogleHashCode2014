@@ -29,4 +29,9 @@ public class PaintInstruction implements Instruction {
         this.size = size;
     }
 
+    @Override
+    public String toString() {
+        return "PAINTSQ " + cell + " " + size;
+    }
+
 }

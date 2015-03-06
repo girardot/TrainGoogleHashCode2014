@@ -27,4 +27,9 @@ public class Cell {
         this.column = column;
     }
 
+    @Override
+    public String toString() {
+        return line + " " + column;
+    }
+
 }
