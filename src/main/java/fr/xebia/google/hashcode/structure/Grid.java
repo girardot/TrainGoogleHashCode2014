@@ -15,7 +15,11 @@ public class Grid {
     }
 
     public Cell getCell(int lineNumber, int columnNumber) {
-        return cells[lineNumber * columnSize + columnNumber];
+        return cells[computeIndex(lineNumber, columnNumber)];
+    }
+
+    int computeIndex(int lineNumber, int columnNumber) {
+        return lineNumber * columnSize + columnNumber;
     }
 
 }
