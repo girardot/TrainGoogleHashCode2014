@@ -35,7 +35,9 @@ public class Grid {
     }
 
     public void addCell(int index, String readChar) {
-        this.cells[index] = new Cell(State.fromAssociatedChar(readChar));
+        int[] coordinates = computeCoordinates(index);
+
+        this.cells[index] = new Cell(coordinates[0], coordinates[1], State.fromAssociatedChar(readChar));
     }
 
     int computeIndex(int lineNumber, int columnNumber) {

@@ -2,7 +2,6 @@ package fr.xebia.google.hashcode.io;
 
 import com.google.common.io.Resources;
 import fr.xebia.google.hashcode.structure.Grid;
-import fr.xebia.google.hashcode.structure.State;
 import junitparams.JUnitParamsRunner;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -30,6 +29,9 @@ public class ReaderTest {
         assertThat(grid.getLineSize()).isEqualTo(5);
         assertThat(grid.getColumnSize()).isEqualTo(7);
         assertThat(grid.getCell(0, 4).getState()).isEqualTo(COLORED);
+        assertThat(grid.getCell(0, 4).getLine()).isEqualTo(0);
+        assertThat(grid.getCell(0, 4).getColumn()).isEqualTo(4);
+
         assertThat(grid.getCell(1, 2).getState()).isEqualTo(COLORED);
         assertThat(grid.getCell(1, 3).getState()).isEqualTo(COLORED);
         assertThat(grid.getCell(1, 4).getState()).isEqualTo(COLORED);
@@ -40,33 +42,5 @@ public class ReaderTest {
         assertThat(grid.getCell(3, 4).getState()).isEqualTo(COLORED);
         assertThat(grid.getCell(4, 2).getState()).isEqualTo(COLORED);
     }
-
-    @Test
-    public void should_check_colored_cells() {
-        // Given
-        Reader reader = new Reader();
-
-        URL resource = Resources.getResource("basicExample.txt");
-
-        // When
-        Grid grid = reader.readFile(resource);
-
-        // Then
-        assertThat(grid).isNotNull();
-        assertThat(grid.getLineSize()).isEqualTo(5);
-        assertThat(grid.getColumnSize()).isEqualTo(7);
-        assertThat(grid.getCell(0, 4).getState()).isEqualTo(COLORED);
-        assertThat(grid.getCell(1, 2).getState()).isEqualTo(COLORED);
-        assertThat(grid.getCell(1, 3).getState()).isEqualTo(COLORED);
-        assertThat(grid.getCell(1, 4).getState()).isEqualTo(COLORED);
-        assertThat(grid.getCell(2, 2).getState()).isEqualTo(COLORED);
-        assertThat(grid.getCell(2, 4).getState()).isEqualTo(COLORED);
-        assertThat(grid.getCell(3, 2).getState()).isEqualTo(COLORED);
-        assertThat(grid.getCell(3, 3).getState()).isEqualTo(COLORED);
-        assertThat(grid.getCell(3, 4).getState()).isEqualTo(COLORED);
-        assertThat(grid.getCell(4, 2).getState()).isEqualTo(COLORED);
-    }
-
-
 
 }
