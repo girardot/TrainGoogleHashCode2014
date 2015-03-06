@@ -6,6 +6,8 @@ public class Cell {
 
     private int column;
 
+    private State state;
+
     public Cell(int line, int column) {
         this.line = line;
         this.column = column;
@@ -31,8 +33,6 @@ public class Cell {
     public String toString() {
         return line + " " + column;
     }
-
-    private State state;
 
     public Cell(State state) {
         this.state = state;
