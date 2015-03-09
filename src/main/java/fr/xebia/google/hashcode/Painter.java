@@ -29,6 +29,8 @@ public class Painter {
     public List<Instruction> createInstructionsWithThreeColumnSizeSquare(Grid grid) {
         List<Instruction> instructions = new ArrayList<>();
 
+
+
         // Parcourir la grille point à point
         // Pour chaque point non traité, calcul pour savoir si utile de colorier carré (3x3)
         //    si oui
