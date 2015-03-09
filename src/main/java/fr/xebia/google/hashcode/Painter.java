@@ -26,4 +26,33 @@ public class Painter {
         return basicInstructions;
     }
 
+    public List<Instruction> createInstructionsWithThreeColumnSizeSquare(Grid grid) {
+        List<Instruction> instructions = new ArrayList<>();
+
+        // Parcourir la grille point à point
+        // Pour chaque point non traité, calcul pour savoir si utile de colorier carré (3x3)
+        //    si oui
+        //      => on fait l'instruction de coloriage
+        //      => on fait les instructions d'effacements
+        //      => on marque les cellules comme traitées
+
+        return instructions;
+    }
+
+//    public List<Instruction> createOptimizedInstructions(Grid grid) {
+//        List<Instruction> optimizedInstructions = new ArrayList<>();
+//
+//        newInstructions.computeNewInstructions();
+//
+//        while (newInstructions.containsOptimizedInstructions()) {
+//            optimizedInstructions.addAll(newInstructions.extractOptimizedInstructions());
+//
+//            newInstructions.computeNewInstructions();
+//        }
+//
+//        optimizedInstructions.addAll(computeRemainInstructions());
+//
+//        return optimizedInstructions;
+//    }
+
 }

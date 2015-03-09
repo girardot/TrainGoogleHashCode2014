@@ -1,6 +1,6 @@
 package fr.xebia.google.hashcode.structure;
 
-import static fr.xebia.google.hashcode.structure.State.COLORED;
+import static fr.xebia.google.hashcode.structure.ColorTarget.COLORED;
 
 public class Cell {
 
@@ -8,10 +8,12 @@ public class Cell {
 
     private int column;
 
-    private State state;
+    private ColorTarget colorTarget;
 
-    public Cell(State state) {
-        this.state = state;
+    private AlgoState algoState = AlgoState.DOING;
+
+    public Cell(ColorTarget colorTarget) {
+        this.colorTarget = colorTarget;
     }
 
     public Cell(int line, int column) {
@@ -19,10 +21,10 @@ public class Cell {
         this.column = column;
     }
 
-    public Cell(int line, int column, State state) {
+    public Cell(int line, int column, ColorTarget colorTarget) {
         this.line = line;
         this.column = column;
-        this.state = state;
+        this.colorTarget = colorTarget;
     }
 
     public int getLine() {
@@ -46,15 +48,23 @@ public class Cell {
         return line + " " + column;
     }
 
-    public State getState() {
-        return state;
+    public ColorTarget getColorTarget() {
+        return colorTarget;
     }
 
-    public void setState(State state) {
-        this.state = state;
+    public void setState(ColorTarget colorTarget) {
+        this.colorTarget = colorTarget;
     }
 
     public boolean isColored() {
-        return COLORED.equals(this.state);
+        return COLORED.equals(this.colorTarget);
+    }
+
+    public boolean isDone() {
+        return AlgoState.DONE.equals(this.algoState);
+    }
+
+    private enum AlgoState {
+        DONE, DOING
     }
 }

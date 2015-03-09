@@ -2,8 +2,8 @@ package fr.xebia.google.hashcode.structure;
 
 import org.junit.Test;
 
-import static fr.xebia.google.hashcode.structure.State.BLANK;
-import static fr.xebia.google.hashcode.structure.State.COLORED;
+import static fr.xebia.google.hashcode.structure.ColorTarget.BLANK;
+import static fr.xebia.google.hashcode.structure.ColorTarget.COLORED;
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class CellTest {

@@ -2,7 +2,7 @@ package fr.xebia.google.hashcode.instruction;
 
 import fr.xebia.google.hashcode.structure.Cell;
 import fr.xebia.google.hashcode.structure.Grid;
-import fr.xebia.google.hashcode.structure.State;
+import fr.xebia.google.hashcode.structure.ColorTarget;
 
 public class PaintInstruction implements Instruction {
 
@@ -38,7 +38,7 @@ public class PaintInstruction implements Instruction {
 
     @Override
     public void print(Grid grid) {
-        grid.getCell(cell.getLine(), cell.getColumn()).setState(State.COLORED);
+        grid.getCell(cell.getLine(), cell.getColumn()).setState(ColorTarget.COLORED);
     }
 
 //    private void drawSquare()

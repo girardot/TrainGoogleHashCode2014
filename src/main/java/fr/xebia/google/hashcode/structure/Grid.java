@@ -18,7 +18,7 @@ public class Grid {
 
     public void init() {
         for (int i = 0; i < lineSize * columnSize; i++) {
-            cells[i] = new Cell(State.BLANK);
+            cells[i] = new Cell(ColorTarget.BLANK);
         }
     }
 
@@ -37,7 +37,7 @@ public class Grid {
     public void addCell(int index, String readChar) {
         int[] coordinates = computeCoordinates(index);
 
-        this.cells[index] = new Cell(coordinates[0], coordinates[1], State.fromAssociatedChar(readChar));
+        this.cells[index] = new Cell(coordinates[0], coordinates[1], ColorTarget.fromAssociatedChar(readChar));
     }
 
     int computeIndex(int lineNumber, int columnNumber) {
@@ -57,7 +57,7 @@ public class Grid {
     public String toString() {
         String result = "";
         for (int i = 0; i < lineSize * columnSize; i++) {
-            result += cells[i].getState().getAssociatedChar();
+            result += cells[i].getColorTarget().getAssociatedChar();
             if ((i +1) % columnSize == 0) {
                 result += "\n";
             }

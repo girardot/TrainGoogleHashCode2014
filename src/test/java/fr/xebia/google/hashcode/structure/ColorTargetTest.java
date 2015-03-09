@@ -4,13 +4,13 @@ import org.junit.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-public class StateTest {
+public class ColorTargetTest {
 
     @Test
     public void should_return_associated_state() {
         // Given / When / Then
-        assertThat(State.fromAssociatedChar("#")).isEqualTo(State.COLORED);
-        assertThat(State.fromAssociatedChar(".")).isEqualTo(State.BLANK);
+        assertThat(ColorTarget.fromAssociatedChar("#")).isEqualTo(ColorTarget.COLORED);
+        assertThat(ColorTarget.fromAssociatedChar(".")).isEqualTo(ColorTarget.BLANK);
     }
 
     @Test
