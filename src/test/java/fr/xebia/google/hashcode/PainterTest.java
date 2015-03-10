@@ -2,6 +2,7 @@ package fr.xebia.google.hashcode;
 
 import com.google.common.collect.Lists;
 import com.google.common.io.Resources;
+import fr.xebia.google.hashcode.generator.InstructionToImageGenerator;
 import fr.xebia.google.hashcode.instruction.EraseInstruction;
 import fr.xebia.google.hashcode.instruction.Instruction;
 import fr.xebia.google.hashcode.instruction.PaintInstruction;
@@ -12,6 +13,7 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
+import java.io.*;
 import java.net.URL;
 import java.util.Iterator;
 import java.util.List;
@@ -37,25 +39,38 @@ public class PainterTest {
     }
 
     @Test
-    public void should_generate_basic_instruction() {
+    public void should_generate_basic_instruction() throws IOException {
         // Given
         Reader reader = new Reader();
-//        URL resource = Resources.getResource("basicExample.txt");
-        URL resource = Resources.getResource("doodle.txt");
+        URL resource = Resources.getResource("basicExample.txt");
+//        URL resource = Resources.getResource("doodle.txt");
 
         Grid grid = reader.readFile(resource);
 
         // When
-        List<Instruction> basicInstructions = painter.createInstructionsWithThreeColumnSizeSquare(grid);
-//        List<Instruction> basicInstructions = painter.createBasicInstructions(grid);
+        List<Instruction> instructions = painter.createInstructionsWithThreeColumnSizeSquare(grid);
+//        List<Instruction> instructions = painter.createBasicInstructions(grid);
 
         // Then
-        assertThat(basicInstructions).isNotEmpty();
+        assertThat(instructions).isNotEmpty();
 
-        System.out.println(basicInstructions.size());
-        for (Instruction basicInstruction : basicInstructions) {
-            System.out.println(basicInstruction);
+        // Check same image
+        String generatedFile = InstructionToImageGenerator.generate(grid.getLineSize(), grid.getColumnSize(), instructions);
+
+        URL outPutUrl = Resources.getResource("testFile.txt");
+
+        Writer writer = new OutputStreamWriter(new FileOutputStream(outPutUrl.getFile()), "UTF-8");
+
+        try {
+            writer.append(generatedFile);
+        } finally {
+            writer.close();
         }
+
+//        System.out.println(instructions.size());
+//        for (Instruction basicInstruction : instructions) {
+//            System.out.println(basicInstruction);
+//        }
     }
 
     @Test
