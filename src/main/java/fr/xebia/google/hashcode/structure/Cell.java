@@ -56,7 +56,7 @@ public class Cell {
         this.colorTarget = colorTarget;
     }
 
-    public boolean isColored() {
+    public boolean mustBeColored() {
         return COLORED.equals(this.colorTarget);
     }
 
@@ -64,7 +64,15 @@ public class Cell {
         return AlgoState.DONE.equals(this.algoState);
     }
 
+    public void markAsDone() {
+        this.algoState = AlgoState.DONE;
+    }
+
     private enum AlgoState {
         DONE, DOING
+    }
+
+    public int[] coordinatesToArray() {
+        return new int[] {this.getLine(), this.getColumn()};
     }
 }

@@ -29,4 +29,21 @@ public class EraseInstruction implements Instruction {
     public void print(Grid grid) {
         grid.getCell(cell.getLine(), cell.getColumn()).setState(ColorTarget.BLANK);
     }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof EraseInstruction)) return false;
+
+        EraseInstruction that = (EraseInstruction) o;
+
+        if (cell != null ? !cell.equals(that.cell) : that.cell != null) return false;
+
+        return true;
+    }
+
+    @Override
+    public int hashCode() {
+        return cell != null ? cell.hashCode() : 0;
+    }
 }

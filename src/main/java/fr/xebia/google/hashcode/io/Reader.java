@@ -20,6 +20,7 @@ public class Reader {
             Integer lineNumber = null;
             Integer columnNumber = null;
             int i = 0;
+            String readNumber = "";
 
             while (data != -1) {
                 String readCharacter = "" + (char) data;
@@ -27,17 +28,17 @@ public class Reader {
                 // First Line
                 if (firstLine) {
                     if (System.lineSeparator().compareToIgnoreCase(readCharacter) == 0) {
+                        columnNumber = Integer.valueOf(readNumber);
+                        grid = new Grid(lineNumber, columnNumber);
                         firstLine = false;
                     }
                     else {
-                        if (!readCharacter.equalsIgnoreCase(" ")) {
-                            if (lineNumber == null) {
-                                lineNumber = Integer.valueOf(readCharacter);
-                            }
-                            else {
-                                columnNumber = Integer.valueOf(readCharacter);
-                                grid = new Grid(lineNumber, columnNumber);
-                            }
+                        if (readCharacter.equalsIgnoreCase(" ")) {
+                            lineNumber = Integer.valueOf(readNumber);
+                            readNumber = "";
+                        }
+                        else {
+                            readNumber += readCharacter;
                         }
                     }
                 }

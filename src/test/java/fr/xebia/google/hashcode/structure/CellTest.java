@@ -14,7 +14,7 @@ public class CellTest {
         Cell coloredCell = new Cell(COLORED);
 
         // When / Then
-        assertThat(coloredCell.isColored()).isTrue();
+        assertThat(coloredCell.mustBeColored()).isTrue();
     }
 
     @Test
@@ -23,7 +23,7 @@ public class CellTest {
         Cell coloredCell = new Cell(BLANK);
 
         // When / Then
-        assertThat(coloredCell.isColored()).isFalse();
+        assertThat(coloredCell.mustBeColored()).isFalse();
     }
 
 }

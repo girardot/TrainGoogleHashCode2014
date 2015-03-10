@@ -56,7 +56,7 @@ public class Grid {
         return coordinates;
     }
 
-    public GridIterator iterator() {
+    public Iterator<Cell> iterator() {
         return new GridIterator(this);
     }
 
