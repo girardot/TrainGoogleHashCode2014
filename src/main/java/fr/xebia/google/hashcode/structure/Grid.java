@@ -10,6 +10,8 @@ public class Grid {
 
     private Cell[] cells;
 
+    private int lastIndex = 0;
+
     public Grid(int lineSize, int columnSize) {
         this.lineSize = lineSize;
         this.columnSize = columnSize;
@@ -41,6 +43,13 @@ public class Grid {
         int[] coordinates = computeCoordinates(index);
 
         this.cells[index] = new Cell(coordinates[0], coordinates[1], ColorTarget.fromAssociatedChar(readChar));
+    }
+
+    public void pushCell(String readChar) {
+        int[] coordinates = computeCoordinates(lastIndex);
+
+        this.cells[lastIndex] = new Cell(coordinates[0], coordinates[1], ColorTarget.fromAssociatedChar(readChar));
+        lastIndex++;
     }
 
     int computeIndex(int lineNumber, int columnNumber) {
