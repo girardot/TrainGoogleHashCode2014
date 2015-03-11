@@ -1,13 +1,15 @@
 package fr.xebia.google.hashcode.utils;
 
+import fr.xebia.google.hashcode.instruction.Instruction;
 import fr.xebia.google.hashcode.structure.Grid;
 import javafx.util.Pair;
 
 import java.io.IOException;
-import java.nio.file.FileSystems;
-import java.nio.file.Files;
-import java.nio.file.Path;
+import java.nio.charset.Charset;
+import java.nio.file.*;
+import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collector;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
@@ -27,6 +29,16 @@ public class FileUtils {
         computeGrid(grid, lines);
 
         return grid;
+    }
+
+    public static List<String> readFileInString(String filePath, String fileName) {
+        Path path = FileSystems.getDefault().getPath(filePath, fileName);
+        try {
+            return Files.readAllLines(path);
+        } catch (IOException e) {
+            e.printStackTrace();
+            return null;
+        }
     }
 
     private static Pair<Integer, Integer> readFirstLine(Path path) {
@@ -51,6 +63,15 @@ public class FileUtils {
     private static void computeGrid(Grid grid, List<String> lines) {
         for (String points : lines) {
             points.chars().forEach(c -> grid.pushCell(valueOf((char)c)));
+        }
+    }
+
+    public static void writeInstructionsInFile(List<Instruction> instructions, String filePath, String fileName) {
+        Path path = FileSystems.getDefault().getPath(filePath, fileName);
+        try {
+            Files.write(path, instructions.stream().map(Object::toString).collect(Collectors.toList()), StandardOpenOption.WRITE);
+        } catch (IOException e) {
+            e.printStackTrace();
         }
     }
 
