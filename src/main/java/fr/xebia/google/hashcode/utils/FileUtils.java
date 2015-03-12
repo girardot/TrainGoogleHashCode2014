@@ -43,8 +43,10 @@ public class FileUtils {
 
     private static Pair<Integer, Integer> readFirstLine(Path path) {
         try (Stream<String> fileLines = Files.lines(path)) {
-            return fileLines.findFirst().
-                    map(s -> new Pair<>(parseInt(s.split(" ")[0]), parseInt(s.split(" ")[1]))).orElse(new Pair<>(0, 0));
+            return fileLines.findFirst()
+                    .map(s -> s.split(" "))
+                    .map(t -> new Pair<>(parseInt(t[0]), parseInt(t[1])))
+                    .get();
         } catch (IOException e) {
             e.printStackTrace();
             return null;
