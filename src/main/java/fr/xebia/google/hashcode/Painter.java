@@ -96,7 +96,7 @@ public class Painter {
                 }
             }
 
-            if (toColorCount / 9.0 > 0.5) {
+            if (toColorCount >= 5) {
                 return new PaintInstruction(new Cell(cell.getLine() + 1, cell.getColumn() + 1), 1);
             }
         }
